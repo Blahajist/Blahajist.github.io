@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title>BLÅHAJ</title>
+    <link href="/assets/css/cmd.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: Consolas;
+        }
+
+    </style>
+    <script src="/assets/pics/blahaj.jpg">
+    </script>
+    <script>
+$(document).ready(function(){
+$(document).keyup(function(event){
+if(event.keyCode ==13){
+$.ajax({
+type: "POST",
+url: "ok.php",
+data: "code="+$("#in").val(),
+success: function(msg){
+$("ul").append("<li>"+$("#in").val()+"</li>"); //将输入的输出到界面
+$("ul").append("<li>"+msg+"</li>"); //获取返回值并输出
+$("#in").val(""); //清空输入框
+$("#text").scrollTop($("#text").scrollTop()+32);//滚动条拉到最下面，显示出输入框
+}
+});
+}
+});
+$("#in")[0].focus();
+});
+
+    </script>
+</head>
+<body>
+<div class="window">
+    <div class="title">
+        <img src="/assets/pics/1.jpg">
+        <span>BLÅHAJ OS</span>
+    </div>
+    <div id="text">
+        <ul>
+            <li>Welcome...</li>
+            <li>login:</li>
+        </ul>
+        <input type="text" name="" id='in'>
+    </div>
+</div>
+</body>
+
